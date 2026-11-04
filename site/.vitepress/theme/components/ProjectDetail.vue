@@ -49,7 +49,14 @@ const tocSections: { id: string; label: string }[] = [
             <a href="#devlog">{{ entries.length }} 篇开发记录 ↓</a>
           </div>
           <div class="vie-detail-actions">
-            <a class="vie-cta vie-cta--primary" href="#experience">查看产品体验</a>
+            <a
+              v-if="project.download"
+              class="vie-cta vie-cta--primary"
+              :href="project.download"
+              target="_blank"
+              rel="noopener noreferrer"
+            >下载 Windows x64 便携版 ↗</a>
+            <a :class="['vie-cta', project.download ? 'vie-cta--ghost' : 'vie-cta--primary']" href="#experience">查看产品体验</a>
             <a
               v-if="project.demo"
               class="vie-cta vie-cta--ghost"

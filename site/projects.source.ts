@@ -55,6 +55,7 @@ export interface Project {
   media?: ProjectMedia[]
   github?: string
   demo?: string
+  download?: string
   decisions?: ProjectDecision[]
   log?: ProjectLogEntry[]
   overview?: ProjectFact[]
@@ -71,6 +72,80 @@ export const projectStatusLabel = {
 } as const satisfies Record<ProjectStatus, string>
 
 export const projectsSource: Project[] = [
+  {
+    name: '轻启 Glint',
+    slug: 'glint',
+    status: 'building',
+    description:
+      '轻启 Glint 是一款 Windows 应用快捷搜索工具。按 Alt+Space 唤出，输入中文、英文、全拼、首字母或别名，用键盘启动应用。已发布 Windows x64 便携版，当前仍为自用原型。',
+    proposition: '按下 Alt+Space，找到并打开你的应用。',
+    updatedAt: '2026-11-04',
+    tags: ['C#', '.NET 10', 'WPF', 'TinyPinyin', 'Windows'],
+    featured: false,
+    github: 'https://github.com/VieVibe/Glint',
+    download: 'https://github.com/VieVibe/Glint/releases/latest/download/Glint-win-x64.zip',
+    overview: [
+      { term: '出发点', text: '减少在开始菜单和桌面中寻找应用的操作，让中文、拼音和习惯用语都能成为启动入口。' },
+      { term: '适合谁', text: '希望用键盘快速打开应用的 Windows x64 用户，也支持手动添加不在开始菜单中的便携应用。' },
+      { term: '交付范围', text: '已发布 v0.1.1 便携版，自带 .NET 运行时。下载 ZIP 后完整解压，运行 Glint.exe；移动时保留整个文件夹，开启开机启动后请保持路径稳定。' },
+      { term: '源码与许可', text: '源码公开可查。自有代码采用 Glint 源码可用许可证 1.0，允许商业使用与二次开发，限制原样或仅换皮后作为收费软件兜售；具体授权以仓库 LICENSE 为准。' },
+    ],
+    flows: [
+      {
+        title: '从搜索到启动',
+        steps: [
+          '下载 Windows x64 便携版，完整解压后运行 Glint.exe',
+          '按 Alt+Space 唤出，输入微信、weixin、wx 或 WeChat 等名称',
+          '用方向键选择并按 Enter 启动，或按 Alt+1 至 Alt+8 直接打开对应结果',
+          '按 Esc、再次按唤出快捷键或点击其他窗口收起，从托盘菜单退出',
+        ],
+      },
+      {
+        title: '按自己的习惯整理',
+        steps: [
+          '选中应用后按 Ctrl+D 固定或取消固定，按 Ctrl+E 编辑自定义搜索别名',
+          '用逗号或换行分隔多个别名，按 Ctrl+Enter 保存，留空可清除',
+          '按 F2 打开设置，添加便携应用、修改快捷键或选择开机启动；开机启动默认关闭',
+          '按 F5 手动刷新索引，更新软件前先从托盘退出旧版，再替换程序文件',
+        ],
+      },
+    ],
+    capabilities: [
+      { title: '中文、拼音与别名搜索', description: '支持中文、英文、全拼、首字母、内置别名与自定义别名。精确名称优先，自定义精确别名优于内置别名；拼音采用单字读音，多音字可通过自定义别名补充。' },
+      { title: '键盘启动与常用排序', description: '方向键、回车与数字快捷键完成启动，固定应用在相关性相同时优先，使用频率参与排序。支持全局快捷键唤出、托盘常驻与重复运行唤出已有实例。' },
+      { title: '自动更新应用索引', description: '从开始菜单和 Windows 应用列表建立索引，支持手动补充便携应用。开始菜单变化后合并刷新请求，每十分钟补充刷新；刷新保留搜索词与仍在结果中的选中项。' },
+      { title: '本地设置与系统集成', description: '设置、使用次数、固定应用和别名保存在本机，兼容旧版设置。提供两种唤出快捷键和开机启动开关，快捷键注册失败时明确提示，窗口按屏幕缩放和可用区域限制大小。' },
+    ],
+    architecture:
+      'C# / .NET 10 / WPF 构建 Windows x64 桌面应用。Glint.Core 承载应用目录、匹配与排序，避免依赖界面框架；Glint.App 负责窗口、全局快捷键、托盘与系统集成。TinyPinyin 提供拼音转换，输入时只匹配内存索引；目录变化延迟 1.5 秒合并刷新，图标提取共享任务并限制为最多两路并发。PowerShell 脚本与 GitHub Actions 完成检查、自带运行时的便携包构建和发布。',
+    validation: [
+      '项目开发状态记录包含 43 项自动检查，覆盖搜索匹配、排序、别名、设置迁移、真实 Windows 快捷方式解析与去重、文件变化刷新和窗口边界计算。',
+      '已记录的运行验证包括中文及拼音首字母搜索、回车启动、全局快捷键唤出与聚焦、Esc 收起、单实例唤出、正常退出，以及固定操作和别名编辑窗口聚焦。',
+      'v0.1.1 发布记录确认 43 项自动检查通过，发布包完成启动及压缩包完整性检查；当前版本尚未进行代码签名。',
+      '纯搜索耗时检查使用 2000 条模拟应用，结果依设备而异，不包含界面、唤出或磁盘扫描耗时，因此不作为完整启动性能承诺。',
+      '仍待验证：别名编辑完整保存与取消流程、不同中文输入法、多屏混合 DPI 真实设备、商店应用与特殊快捷方式、开机登录、快捷键冲突和长期常驻资源占用。',
+    ],
+    log: [
+      {
+        date: '2026-11-04', title: '明确源码可用许可与商业使用边界',
+        detail: '补充 Glint 源码可用许可证 1.0 与第三方声明，允许商业使用和二次开发，限制原样或换皮收费兜售。',
+        type: 'decision', tech: ['源码许可'],
+        link: 'https://github.com/VieVibe/Glint/commit/713aeb2',
+      },
+      {
+        date: '2026-11-03', title: '发布 v0.1.1，补齐作者与反馈入口',
+        detail: '设置和托盘菜单增加作者 GitHub 与项目反馈入口，提供自带运行时的 Windows x64 ZIP 和 SHA256 校验文件；43 项自动检查及发布包启动检查通过。',
+        type: 'milestone', tech: ['WPF', 'GitHub Actions'],
+        link: 'https://github.com/VieVibe/Glint/releases/tag/v0.1.1',
+      },
+      {
+        date: '2026-11-03', title: '完成应用启动器原型',
+        detail: '实现应用索引、中文与拼音匹配、固定与别名、键盘启动、自动刷新、托盘、便携应用补充和开机启动设置。',
+        type: 'feature', tech: ['C#', '.NET 10', 'WPF', 'TinyPinyin'],
+        link: 'https://github.com/VieVibe/Glint/commit/f865fb3',
+      },
+    ],
+  },
   {
     name: '阳光明媚',
     slug: 'vie-gallery',
