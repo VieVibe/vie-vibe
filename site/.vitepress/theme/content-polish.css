@@ -535,17 +535,16 @@
 }
 
 .vp-doc :is(.vie-flagship, .vie-project-row, .vie-facts, .vie-validation, .vie-timeline-card) {
-  border: 1px solid var(--vie-line);
   border-radius: var(--vie-radius);
   background: var(--vie-panel);
 }
 
-.vp-doc :is(.vie-flows, .vie-project-end, .vie-project-row__journal, .vie-flagship__milestone) {
+.vp-doc :is(.vie-flows, .vie-project-end) {
   border-radius: var(--vie-radius-sm);
   background: var(--vie-green-soft);
 }
 
-.vp-doc :is(.vie-spotlight__name, .vie-detail-title h1) {
+.vp-doc :is(.vie-spotlight__name, .vie-detail-title) {
   line-height: 1.3;
 }
 
@@ -554,7 +553,6 @@
 }
 
 .vp-doc :is(.vie-projects, .vie-project-page) :is(.vie-media-stage, .vie-capability__media) {
-  border: 1px solid var(--vie-line);
   border-radius: var(--vie-radius-sm);
 }
 

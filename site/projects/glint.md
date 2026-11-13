@@ -1,6 +1,6 @@
 ---
 title: 轻启 Glint
-description: Windows 应用快捷搜索工具，支持中文、拼音和自定义别名搜索、键盘启动、固定应用与自动刷新，提供 Windows x64 便携版下载和开发记录。
+description: Windows 应用快捷搜索工具，支持中文、拼音和自定义别名搜索、键盘启动、固定应用与自动刷新，提供 Windows x64 便携版下载。
 aside: false
 lastUpdated: false
 jsonLd:

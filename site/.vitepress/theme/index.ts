@@ -6,6 +6,7 @@ import VieShell from './components/VieShell.vue'
 import ViePageHeader from './components/ViePageHeader.vue'
 import Projects from './components/Projects.vue'
 import ProjectDetail from './components/ProjectDetail.vue'
+import ProjectLog from './components/ProjectLog.vue'
 import ProjectSpotlight from './components/ProjectSpotlight.vue'
 import ProjectStatus from './components/ProjectStatus.vue'
 import ProjectMediaStrip from './components/ProjectMediaStrip.vue'
@@ -40,6 +41,7 @@ export default {
     app.component('ViePageHeader', ViePageHeader)
     app.component('Projects', Projects)
     app.component('ProjectDetail', ProjectDetail)
+    app.component('ProjectLog', ProjectLog)
     app.component('ProjectSpotlight', ProjectSpotlight)
     app.component('ProjectStatus', ProjectStatus)
     app.component('ProjectMediaStrip', ProjectMediaStrip)

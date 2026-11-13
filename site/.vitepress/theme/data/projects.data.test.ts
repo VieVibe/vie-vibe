@@ -1,7 +1,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import matter from 'gray-matter'
 import { describe, expect, it } from 'vitest'
+import devlogRoutes from '../../../projects/[slug]/devlog.paths'
+import { legacyProjectLogTarget, logAnchorId, projectLogPath } from '../components/logAnchor'
 import {
   projectsSource,
   projectStatusLabel,
@@ -43,6 +46,23 @@ describe('projects data', () => {
         `${p.name}: missing site/projects/${p.slug}.md`,
       ).toBe(true)
     }
+  })
+
+  it('generates a named development log page for every project', () => {
+    const routes = devlogRoutes.paths()
+    expect(routes.map(({ params }) => params.slug)).toEqual(projects.map((p) => p.slug))
+    for (const [i, route] of routes.entries()) {
+      expect(matter(route.content).data).toMatchObject({ title: `${projects[i].name} 开发日志` })
+      expect(projectLogPath(route.params.slug)).toBe(`/projects/${route.params.slug}/devlog`)
+    }
+  })
+
+  it('preserves legacy journal and entry fragments without redirecting introduction sections', () => {
+    expect(legacyProjectLogTarget('glint', '', '#devlog')).toBe('/projects/glint/devlog#devlog')
+    const entry = `#${logAnchorId(3, 0)}`
+    expect(legacyProjectLogTarget('glint', '?ref=portfolio', entry)).toBe(`/projects/glint/devlog?ref=portfolio${entry}`)
+    expect(legacyProjectLogTarget('glint', '', '#architecture')).toBeUndefined()
+    expect(legacyProjectLogTarget('glint', '', '')).toBeUndefined()
   })
 
   it('shared presentation fields are well-formed', () => {

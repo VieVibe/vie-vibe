@@ -57,25 +57,11 @@
   overflow-wrap: anywhere;
 }
 
-.vp-doc .vie-spotlight__prop {
-  margin: 0;
-  color: var(--vie-ink);
-  font-size: 18px;
-  line-height: 1.8;
-}
-
 .vp-doc .vie-spotlight__summary {
   margin: 0;
   color: var(--vie-ink-soft);
   font-size: 16px;
   line-height: 1.85;
-}
-
-.vp-doc .vie-spotlight__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 6px;
 }
 
 .vp-doc .vie-project-tech {
@@ -156,10 +142,6 @@
 }
 
 .vie-projects-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 24px;
   margin-bottom: 32px;
 }
 
@@ -173,12 +155,6 @@
 .vie-vibe .vp-doc .vie-projects-heading p {
   margin: 12px 0 0;
   color: var(--vie-ink-soft);
-}
-
-.vie-vibe .vp-doc .vie-projects-heading .vie-projects-heading__meta {
-  flex: none;
-  margin: 0 0 3px;
-  font-size: 13px;
 }
 
 .vie-flagship {
@@ -205,65 +181,12 @@
   font-size: clamp(36px, 4vw, 52px);
 }
 
-.vie-vibe .vp-doc .vie-projects .vie-spotlight__prop {
-  font-size: 20px;
-  line-height: 1.8;
-}
-
 .vie-vibe .vp-doc .vie-projects .vie-spotlight__summary {
-  color: var(--vie-ink-soft);
+  color: var(--vie-ink);
 }
 
 .vie-flagship__media {
   min-width: 0;
-}
-
-.vie-flagship__milestone {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 24px;
-  align-items: center;
-  margin-top: 32px;
-  padding: 20px 24px;
-  background: var(--project-surface);
-  border-radius: 6px;
-}
-
-.vie-flagship__milestone-label {
-  display: grid;
-  gap: 2px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vie-green-action);
-}
-
-.vie-flagship__milestone time {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--project-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.vp-doc .vie-flagship__milestone a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  min-height: 44px;
-  color: var(--vie-ink);
-  font-size: 15px;
-  text-decoration: none;
-  line-height: 1.7;
-}
-
-.vie-flagship__milestone a > span {
-  flex: none;
-  color: var(--vie-green-action);
-  transition: transform 180ms ease;
-}
-
-.vie-flagship__milestone a:hover > span {
-  transform: translate(2px, -2px);
 }
 
 /* The screenshots are the visual. Each original stays one click away. */
@@ -434,67 +357,15 @@
 
 .vie-more__grid {
   display: grid;
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.vie-project-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: 56px;
-  align-items: start;
+.vp-doc .vie-project-row {
+  grid-template-rows: auto auto 1fr auto auto;
   padding: 32px 36px;
   background: var(--vie-panel);
   border-radius: var(--vie-radius);
-}
-
-.vie-vibe .vp-doc .vie-project-row .vie-spotlight__prop {
-  font-size: 18px;
-}
-
-.vie-project-row__journal {
-  min-width: 0;
-  padding: 22px 24px;
-  background: var(--project-surface);
-  border-radius: 6px;
-}
-
-.vie-vibe .vp-doc .vie-project-row__journal p {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 0 16px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.vie-project-row__journal p > span {
-  color: var(--project-muted);
-  font-weight: 400;
-}
-
-.vp-doc .vie-project-row__journal a {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 16px;
-  gap: 6px 16px;
-  color: var(--vie-ink);
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.vie-project-row__journal a + a {
-  margin-top: 22px;
-}
-
-.vie-project-row__journal time {
-  grid-column: 1 / -1;
-  color: var(--project-muted);
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-}
-
-.vie-project-row__journal a:hover {
-  color: var(--vie-green-action);
 }
 
 /* Capability evidence uses full rows, with room for the real interface. */
@@ -576,8 +447,7 @@
   .vie-flagship__top {
     gap: 28px;
   }
-  .vie-project-row {
-    gap: 32px;
+  .vp-doc .vie-project-row {
     padding: 28px;
   }
 }
@@ -589,13 +459,7 @@
   .vie-app:has(:is(.vie-projects, .vie-project-page)) .vie-global-nav__github {
     flex-shrink: 0;
   }
-  .vie-projects-heading {
-    align-items: start;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-  .vie-flagship__top, .vie-project-row {
+  .vie-flagship__top {
     grid-template-columns: 1fr;
   }
   .vie-projects .vie-flagship .vie-spotlight {
@@ -608,9 +472,6 @@
   .vie-capabilities.has-media .vie-capability {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .vie-project-row__journal {
-    padding: 20px;
   }
   .vie-more {
     margin-top: 40px;
@@ -629,32 +490,20 @@
     padding-top: 8px;
   }
   .vie-projects-heading {
-    gap: 10px;
     padding: 0 4px;
   }
   .vie-vibe .vp-doc .vie-projects-heading p {
     font-size: 15px;
   }
-  .vie-flagship, .vie-project-row {
+  .vie-flagship, .vp-doc .vie-project-row {
     padding: 22px 18px;
     border-radius: 10px;
   }
   .vie-projects .vie-flagship .vie-spotlight {
     gap: 16px;
   }
-  .vie-vibe .vp-doc .vie-projects .vie-spotlight__prop {
-    font-size: 18px;
-  }
-  .vie-flagship__milestone {
+  .vie-more__grid {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 16px;
-    margin-top: 24px;
-  }
-  .vie-flagship__milestone-label {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
   }
   .vie-media-select {
     gap: 6px;
@@ -682,13 +531,10 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
-  .vie-project-row {
-    gap: 28px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vp-doc a.vie-cta, .vie-media-select button, .vie-media-navigation__arrows button, .vie-flagship__milestone a > span {
+  .vp-doc a.vie-cta, .vie-media-select button, .vie-media-navigation__arrows button {
     transition: none;
     transform: none;
   }

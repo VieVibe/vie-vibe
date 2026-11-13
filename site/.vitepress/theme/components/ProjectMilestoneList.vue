@@ -46,6 +46,7 @@ const typeIcon = {
       :id="logAnchorId(entries.length, i)"
       :key="e.date + '-' + i"
       class="vie-timeline-item"
+      tabindex="-1"
     >
       <div class="vie-timeline-meta">
         <time :datetime="e.date">{{ e.date }}</time>
