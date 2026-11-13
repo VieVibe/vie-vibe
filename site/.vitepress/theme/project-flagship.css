@@ -368,67 +368,6 @@
   border-radius: var(--vie-radius);
 }
 
-/* Capability evidence uses full rows, with room for the real interface. */
-.vp-doc .vie-capabilities {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
-}
-
-.vie-capability {
-  min-width: 0;
-}
-
-.vp-doc .vie-capabilities.has-media {
-  grid-template-columns: 1fr;
-  gap: 40px;
-}
-
-.vie-capabilities.has-media .vie-capability {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-}
-
-.vie-capabilities.has-media .vie-capability:not(:has(img)) {
-  grid-template-columns: 1fr;
-}
-
-.vp-doc .vie-capability__media {
-  display: block;
-  padding: 10px;
-  border-radius: 8px;
-  background: var(--project-surface);
-  cursor: zoom-in;
-}
-
-.vie-vibe:not(.vie-page-home) .vp-doc .vie-capability img {
-  width: 100%;
-  height: auto;
-  border: 0;
-  border-radius: 6px;
-  /* taste-skill-ignore: resets inherited article image shadows */ box-shadow: none;
-}
-
-.vp-doc .vie-capability__body h3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 19px;
-  line-height: 1.55;
-  letter-spacing: -0.02em;
-}
-
-.vie-vibe .vp-doc .vie-capability__body p {
-  margin: 10px 0 0;
-  font-size: 16px;
-  line-height: 1.85;
-}
-
 @keyframes vie-project-image-in {
   from {
     opacity: 0.4;
@@ -468,10 +407,6 @@
   }
   .vie-flagship__top {
     gap: 28px;
-  }
-  .vie-capabilities.has-media .vie-capability {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
   .vie-more {
     margin-top: 40px;
@@ -523,13 +458,6 @@
   }
   .vie-vibe:not(.vie-page-home) .vp-doc .vie-media-select img {
     height: 44px;
-  }
-  .vp-doc .vie-capabilities {
-    grid-template-columns: 1fr;
-  }
-  .vie-capabilities.has-media .vie-capability {
-    grid-template-columns: 1fr;
-    gap: 18px;
   }
 }
 

@@ -3,15 +3,9 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { LogEntryType, ProjectLogEntry } from '../../../projects.source'
 import { logAnchorId } from './logAnchor'
 
-interface TocSection {
-  id: string
-  label: string
-}
-
 const props = defineProps<{
-  sections?: TocSection[]
-  entries?: ProjectLogEntry[]
-  filter?: LogEntryType | 'all'
+  entries: ProjectLogEntry[]
+  filter: LogEntryType | 'all'
 }>()
 const emit = defineEmits<{ 'select-log': [] }>()
 const mobileMenu = ref<HTMLDetailsElement>()
@@ -19,7 +13,7 @@ const mobileMenu = ref<HTMLDetailsElement>()
 async function navigate(event: MouseEvent, id: string) {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
   if (mobileMenu.value) mobileMenu.value.open = false
-  if (props.entries) emit('select-log')
+  emit('select-log')
   // A filtered entry may only get a layout box after the filter resets.
   event.preventDefault()
   await nextTick()
@@ -31,15 +25,11 @@ async function navigate(event: MouseEvent, id: string) {
   queueMeasure()
 }
 
-const items = computed(() => {
-  const entries = props.entries ?? []
-  return props.sections ?? entries.map((e, i) => ({
-    id: logAnchorId(entries.length, i),
-    label: e.title,
-  }))
-})
+const items = computed(() => props.entries.map((entry, index) => ({
+  id: logAnchorId(props.entries.length, index),
+  label: entry.title,
+})))
 const activeId = ref(items.value[0]?.id ?? '')
-const label = computed(() => props.entries ? '日志索引' : '本页目录')
 
 let rafId = 0
 
@@ -84,9 +74,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <nav class="vp-raw vie-detail-toc" :class="{ 'vie-detail-toc--log': entries }" :aria-label="label">
+  <nav class="vp-raw vie-detail-toc" aria-label="日志索引">
     <details ref="mobileMenu" class="vie-toc-mobile">
-      <summary>{{ label }}</summary>
+      <summary>日志索引</summary>
       <ul class="vie-toc-list" role="list">
         <li v-for="item in items" :key="item.id">
           <a
@@ -99,7 +89,7 @@ onBeforeUnmount(() => {
       </ul>
     </details>
     <div class="vie-toc-desktop">
-      <p class="vie-detail-toc__label">{{ label }}</p>
+      <p class="vie-detail-toc__label">日志索引</p>
       <ul class="vie-toc-list" role="list">
         <li v-for="item in items" :key="item.id">
           <a

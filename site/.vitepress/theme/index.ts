@@ -10,7 +10,6 @@ import ProjectLog from './components/ProjectLog.vue'
 import ProjectSpotlight from './components/ProjectSpotlight.vue'
 import ProjectStatus from './components/ProjectStatus.vue'
 import ProjectMediaStrip from './components/ProjectMediaStrip.vue'
-import ProjectCapabilityList from './components/ProjectCapabilityList.vue'
 import ProjectMilestoneList from './components/ProjectMilestoneList.vue'
 import SeriesIndex from './components/SeriesIndex.vue'
 import SeriesPage from './components/SeriesPage.vue'
@@ -30,6 +29,7 @@ import './project-flagship.css'
 import './visual-polish.css'
 import './content-polish.css'
 import './nav-search.css'
+import './product-pages.css'
 
 export default {
   extends: DefaultTheme,
@@ -45,7 +45,6 @@ export default {
     app.component('ProjectSpotlight', ProjectSpotlight)
     app.component('ProjectStatus', ProjectStatus)
     app.component('ProjectMediaStrip', ProjectMediaStrip)
-    app.component('ProjectCapabilityList', ProjectCapabilityList)
     app.component('ProjectMilestoneList', ProjectMilestoneList)
     app.component('SeriesIndex', SeriesIndex)
     app.component('SeriesPage', SeriesPage)

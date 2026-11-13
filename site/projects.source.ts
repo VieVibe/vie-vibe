@@ -77,9 +77,9 @@ export const projectsSource: Project[] = [
     slug: 'glint',
     status: 'building',
     description:
-      '轻启 Glint 是一款 Windows 应用快捷搜索工具。按 Alt+Space 唤出，输入中文、英文、全拼、首字母或别名，用键盘启动应用。已发布 Windows x64 便携版，当前仍为自用原型。',
-    proposition: '按下 Alt+Space，找到并打开你的应用。',
-    updatedAt: '2026-11-04',
+      '轻启 Glint 是一款 Windows 应用启动器与文件预览工具。按 Alt+Space 搜索中文、拼音或别名，在资源管理器按 Space 快速预览文件。提供 Windows x64 便携版。',
+    proposition: '用键盘打开应用，按空格预览文件。',
+    updatedAt: '2026-11-13',
     tags: ['C#', '.NET 10', 'WPF', 'TinyPinyin', 'Windows'],
     featured: false,
     github: 'https://github.com/VieVibe/Glint',
@@ -87,8 +87,8 @@ export const projectsSource: Project[] = [
     overview: [
       { term: '出发点', text: '减少在开始菜单和桌面中寻找应用的操作，让中文、拼音和习惯用语都能成为启动入口。' },
       { term: '适合谁', text: '希望用键盘快速打开应用的 Windows x64 用户，也支持手动添加不在开始菜单中的便携应用。' },
-      { term: '交付范围', text: '已发布 v0.1.1 便携版，自带 .NET 运行时。下载 ZIP 后完整解压，运行 Glint.exe；移动时保留整个文件夹，开启开机启动后请保持路径稳定。' },
-      { term: '源码与许可', text: '源码公开可查。自有代码采用 Glint 源码可用许可证 1.0，允许商业使用与二次开发，限制原样或仅换皮后作为收费软件兜售；具体授权以仓库 LICENSE 为准。' },
+      { term: '交付范围', text: '提供自带 .NET 运行时的 Windows x64 便携版。下载 ZIP 后完整解压，运行 Glint.exe；移动时保留整个文件夹，开启开机启动后请保持路径稳定。' },
+      { term: '源码与许可', text: '自有代码、文档与图标采用 MIT 许可证。第三方组件适用各自的许可证，详见源码仓库。' },
     ],
     flows: [
       {
@@ -126,6 +126,18 @@ export const projectsSource: Project[] = [
       '仍待验证：别名编辑完整保存与取消流程、不同中文输入法、多屏混合 DPI 真实设备、商店应用与特殊快捷方式、开机登录、快捷键冲突和长期常驻资源占用。',
     ],
     log: [
+      {
+        date: '2026-11-13', title: '发布 v0.3.2，完善 Markdown 预览',
+        detail: 'Markdown 预览支持在排版与源码之间切换。v0.3.2 补充常见 HTML 容器的排版支持；同日项目切换到 MIT 许可证。',
+        type: 'milestone', tech: ['WPF', 'Markdown', 'MIT'],
+        link: 'https://github.com/VieVibe/Glint/releases/tag/v0.3.2',
+      },
+      {
+        date: '2026-11-05', title: '发布 v0.2.0，加入 Space 文件快速预览',
+        detail: '在资源管理器或桌面选中文件后按空格，预览图片、视频、PDF 和文字，或查看 Office 文档的文字内容。',
+        type: 'feature', tech: ['WPF', 'Windows'],
+        link: 'https://github.com/VieVibe/Glint/releases/tag/v0.2.0',
+      },
       {
         date: '2026-11-04', title: '明确源码可用许可与商业使用边界',
         detail: '补充 Glint 源码可用许可证 1.0 与第三方声明，允许商业使用和二次开发，限制原样或换皮收费兜售。',
