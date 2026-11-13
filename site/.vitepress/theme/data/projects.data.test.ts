@@ -38,13 +38,11 @@ describe('projects data', () => {
     expect(siteProjects.map((p) => p.name)).toEqual([])
   })
 
-  it('every slug has a page file', () => {
+  it('every project introduction uses the standalone page layout', () => {
     for (const p of projects) {
       if (!p.slug) continue
-      expect(
-        fs.existsSync(path.join(siteRoot, 'projects', `${p.slug}.md`)),
-        `${p.name}: missing site/projects/${p.slug}.md`,
-      ).toBe(true)
+      const page = fs.readFileSync(path.join(siteRoot, 'projects', `${p.slug}.md`), 'utf8')
+      expect(matter(page).data, p.name).toMatchObject({ layout: 'page', standaloneProject: true })
     }
   })
 

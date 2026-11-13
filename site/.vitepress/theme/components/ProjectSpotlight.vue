@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight } from '@lucide/vue'
+import { ArrowUpRight } from '@lucide/vue'
 import { computed } from 'vue'
 import type { Project } from '../../../projects.source'
 import ProjectStatus from './ProjectStatus.vue'
@@ -30,7 +30,9 @@ const detailHref = computed(() =>
     <a
       class="vie-cta vie-cta--primary"
       :href="detailHref"
-      :aria-label="`查看 ${project.name} 项目介绍`"
-    >项目介绍 <ArrowRight :size="16" aria-hidden="true" /></a>
+      :target="project.slug ? '_blank' : undefined"
+      :rel="project.slug ? 'noopener' : undefined"
+      :aria-label="project.slug ? `在新标签页查看 ${project.name} 项目介绍` : '查看项目列表'"
+    >项目介绍 <ArrowUpRight :size="16" aria-hidden="true" /></a>
   </article>
 </template>

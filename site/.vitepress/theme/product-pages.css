@@ -1,5 +1,5 @@
-.vie-vibe .VPContent:has(.product-site) {
-  padding-top: 0;
+html:has(.product-site) {
+  scroll-padding-top: 0;
 }
 
 .product-site {
@@ -12,6 +12,21 @@
   font-family: var(--vie-font-body);
   font-size: 16px;
   line-height: 1.7;
+}
+
+.product-skip {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  transform: translateY(calc(-100% - 20px));
+  background: var(--product-bg);
+  color: var(--product-ink);
+}
+
+.product-skip:focus {
+  transform: none;
 }
 
 .product-site--vie-gallery {

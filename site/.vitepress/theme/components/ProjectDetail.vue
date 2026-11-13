@@ -22,7 +22,8 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
 </script>
 
 <template>
-  <main v-if="project" class="product-site" :class="'product-site--' + slug">
+  <div v-if="project" class="product-site" :class="'product-site--' + slug">
+    <a class="product-skip vp-raw" href="#product-content">跳到产品介绍</a>
     <nav class="product-nav" :aria-label="project.name + ' 导航'">
       <div class="product-wrap product-nav__inner">
         <a class="product-nav__brand" href="/projects" :aria-label="'全部项目，当前项目 ' + project.name">
@@ -39,9 +40,11 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
       </div>
     </nav>
 
-    <component :is="view" :project="project" />
+    <main id="product-content" tabindex="-1">
+      <component :is="view" :project="project" />
+    </main>
 
-    <nav class="product-log-link" aria-label="继续阅读">
+    <footer class="product-log-link">
       <div class="product-wrap product-log-link__inner">
         <div>
           <h2>开发日志</h2>
@@ -49,8 +52,8 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
         </div>
         <a class="product-button product-button--secondary" :href="projectLogPath(slug)">阅读开发日志 <ArrowRight :size="17" aria-hidden="true" /></a>
       </div>
-    </nav>
-  </main>
+    </footer>
+  </div>
   <main v-else class="vie-page">
     <p>未找到这个项目。<a href="/projects">返回项目列表</a></p>
   </main>

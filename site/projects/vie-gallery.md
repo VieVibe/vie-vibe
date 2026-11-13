@@ -1,6 +1,7 @@
 ---
 title: 阳光明媚
 layout: page
+standaloneProject: true
 description: 阳光明媚是一款面向个人与创作者的在线相册。保留原始照片，用 16 种画面风格与 10 种观看编排设计展览，支持版本管理、访问保护与工作区协作。
 image: /images/projects/gallery-coast.webp
 aside: false

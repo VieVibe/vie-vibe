@@ -12,7 +12,7 @@ description: 从一次流式 API 调用开始手写 agent loop：事件模型、
 > 代码在 [erpilot/packages/agent_core](https://github.com/creatawork/Erpilot)（M1 第 1–4 周），约 1200 行 Python + 44 项单测。
 > 这一版刻意不用任何 agent 框架——为什么、以及什么时候我会换上 LangGraph，文末说。
 
-> 更新说明（2026-10-20）：本文保留 2026-09-30 的实现与计划语境。当前运行时已迁移到 LangGraph，审批与事件协议的实际变化见[第 3 篇](/articles/ai/langgraph-approval)，最新进度见[项目页](/projects/erpilot)。
+> 更新说明（2026-10-20）：本文保留 2026-09-30 的实现与计划语境。当前运行时已迁移到 LangGraph，审批与事件协议的实际变化见[第 3 篇](/articles/ai/langgraph-approval)，最新进度见<a href="/projects/erpilot" target="_blank" rel="noopener" aria-label="在新标签页查看 Erpilot 项目介绍">项目页</a>。
 
 大模型 API 只会一件事：发一段消息列表，收一段消息。但我的"掌柜助手"已经能完成这样的任务——用户问"订单 123 里买了什么？还有货吗？报个价"，它自己拆成三步：查订单 → 查库存和报价（这一轮它**自发同时调用了两个工具**，没人教过它并行）→ 组织一句能直接发给顾客的回复。三轮 LLM 往返，成本约 ¥0.0003。
 

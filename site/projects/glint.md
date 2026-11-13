@@ -1,6 +1,7 @@
 ---
 title: 轻启 Glint
 layout: page
+standaloneProject: true
 description: Windows 应用启动器与文件预览工具。用 Alt+Space 搜索中文、拼音和别名，在资源管理器按 Space 预览文件。提供 Windows x64 便携版。
 aside: false
 lastUpdated: false

@@ -34,7 +34,7 @@ const projectOverview = computed(() => featuredProject.value?.capabilities?.find
         </div>
         <div v-if="featuredProject?.media?.length" class="dn-hero-media" data-ui>
           <ProjectMediaStrip :media="featuredProject.media" variant="flagship" eager />
-          <a class="dn-hero-project" :href="projectHref"><span>{{ featuredProject.name }}<small>从一组照片，到一场属于你的展览。</small></span><ArrowUpRight :size="22" aria-hidden="true" /></a>
+          <a class="dn-hero-project" :href="projectHref" target="_blank" rel="noopener"><span>{{ featuredProject.name }}<small>从一组照片，到一场属于你的展览。</small></span><ArrowUpRight :size="22" aria-hidden="true" /></a>
         </div>
         <div class="dn-hero-foot">
           <dl class="dn-counts" aria-label="站点内容">
@@ -53,21 +53,21 @@ const projectOverview = computed(() => featuredProject.value?.capabilities?.find
         </div>
         <div class="dn-work-layout">
           <div class="dn-work-copy">
-            <a :href="projectHref" class="dn-project-title"><h3>{{ featuredProject.name }}</h3><ArrowUpRight :size="25" aria-hidden="true" /></a>
+            <a :href="projectHref" class="dn-project-title" target="_blank" rel="noopener"><h3>{{ featuredProject.name }}</h3><ArrowUpRight :size="25" aria-hidden="true" /></a>
             <p class="dn-project-prop">{{ featuredProject.proposition }}</p>
             <p class="dn-project-summary">{{ featuredProject.description }}</p>
             <p class="dn-project-tech">{{ featuredProject.tags.slice(0, 4).join(' / ') }}</p>
             <div class="dn-project-links">
-              <a class="dn-text-link" :href="projectHref">查看实现与迭代 <ArrowRight :size="18" aria-hidden="true" /></a>
+              <a class="dn-text-link" :href="projectHref" target="_blank" rel="noopener">查看项目介绍 <ArrowUpRight :size="18" aria-hidden="true" /></a>
               <a v-if="featuredProject.demo" class="dn-text-link" :href="featuredProject.demo" :aria-label="`访问 ${featuredProject.name} 线上环境（新窗口打开）`" target="_blank" rel="noopener noreferrer">线上体验 <ArrowUpRight :size="18" aria-hidden="true" /></a>
             </div>
             <div v-for="project in otherProjects" :key="project.name" class="dn-other-project">
-              <a :href="`/projects/${project.slug}`"><span>{{ project.name }}</span><ArrowUpRight :size="18" aria-hidden="true" /></a>
+              <a :href="`/projects/${project.slug}`" target="_blank" rel="noopener"><span>{{ project.name }}</span><ArrowUpRight :size="18" aria-hidden="true" /></a>
               <p>{{ project.proposition }}</p>
             </div>
           </div>
           <figure v-if="projectOverview?.image || featuredProject.image" class="dn-project-evidence">
-            <a :href="projectHref" class="dn-project-image"><img :src="projectOverview?.image || featuredProject.image" :alt="projectOverview ? '阳光明媚创作者的空间概览，展示相册封面、作品整理与发布状态' : featuredProject.name + ' 项目界面'" width="1270" height="882" loading="lazy" decoding="async" /></a>
+            <a :href="projectHref" class="dn-project-image" target="_blank" rel="noopener"><img :src="projectOverview?.image || featuredProject.image" :alt="projectOverview ? '阳光明媚创作者的空间概览，展示相册封面、作品整理与发布状态' : featuredProject.name + ' 项目界面'" width="1270" height="882" loading="lazy" decoding="async" /></a>
             <figcaption>创作者空间 · 从整理作品到发布分享</figcaption>
           </figure>
         </div>

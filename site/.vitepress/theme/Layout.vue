@@ -14,6 +14,7 @@ const { Layout } = DefaultTheme
 const { frontmatter, page } = useData()
 const route = useRoute()
 
+const isStandaloneProject = computed(() => frontmatter.value.standaloneProject === true)
 const isHome = computed(() => route.path === '/' || route.path === '/index.html')
 const isHub = computed(() => route.path === '/articles/' || route.path === '/projects' || route.path === '/tools' || route.path.startsWith('/tools/'))
 const isTools = computed(() => route.path === '/tools' || route.path.startsWith('/tools/'))
@@ -63,7 +64,8 @@ onMounted(() => {
 
 <template>
   <div class="vie-app">
-    <Layout
+    <Content v-if="isStandaloneProject" />
+    <Layout v-else
       :class="['vie-vibe', isHome && 'vie-page-home', isHub && 'vie-page-hub', isTools && 'vie-page-tools', isPost && 'vie-page-post']"
     >
     <template #layout-top>
