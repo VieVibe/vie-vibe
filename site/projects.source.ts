@@ -51,6 +51,8 @@ export interface Project {
   image?: string
   tags: string[]
   featured: boolean
+  cover?: ProjectMedia
+  coverPhoto?: ProjectMedia
   capabilities?: ProjectCapability[]
   media?: ProjectMedia[]
   github?: string
@@ -71,6 +73,14 @@ export const projectStatusLabel = {
   paused: '已暂停',
 } as const satisfies Record<ProjectStatus, string>
 
+const galleryWorkspace: ProjectMedia = {
+  src: '/images/projects/vie-gallery-20261017-workspace.webp',
+  alt: '阳光明媚创作者工作区，显示山海之间示例相册、照片整理与发布分享面板',
+  caption: '创作者工作区 · 整理作品、设计展览、发布分享',
+  width: 1270,
+  height: 714,
+}
+
 export const projectsSource: Project[] = [
   {
     name: '轻启 Glint',
@@ -82,6 +92,13 @@ export const projectsSource: Project[] = [
     updatedAt: '2026-11-13',
     tags: ['C#', '.NET 10', 'WPF', 'TinyPinyin', 'Windows'],
     featured: false,
+    cover: {
+      src: '/images/projects/glint-launcher.webp',
+      alt: 'Glint 原生启动器中输入 jsb，搜索结果显示记事本',
+      caption: 'Windows 应用启动器',
+      width: 1152,
+      height: 612,
+    },
     github: 'https://github.com/VieVibe/Glint',
     download: 'https://github.com/VieVibe/Glint/releases/latest/download/Glint-win-x64.zip',
     overview: [
@@ -169,6 +186,14 @@ export const projectsSource: Project[] = [
     image: '/images/projects/vie-gallery-20261017-viewer.webp',
     tags: ['Vue 3', 'Three.js', 'GLSL', 'Spring Boot', 'MyBatis-Plus', 'Docker'],
     featured: true,
+    cover: { ...galleryWorkspace, caption: '在线相册与摄影展览' },
+    coverPhoto: {
+      src: '/images/projects/gallery-coast.webp',
+      alt: '阳光明媚的示例展览中，海浪拍打草坡下的悬崖',
+      caption: '《山海之间》展览 · 海岸来信',
+      width: 1280,
+      height: 720,
+    },
     github: 'https://github.com/creatawork/vie-gallery',
     demo: 'https://gallery.vie-vibe.cn/app/',
     capabilities: [
@@ -201,13 +226,7 @@ export const projectsSource: Project[] = [
         width: 1101,
         height: 892,
       },
-      {
-        src: '/images/projects/vie-gallery-20261017-workspace.webp',
-        alt: '阳光明媚创作者工作区，显示山海之间示例相册、照片整理与发布分享面板',
-        caption: '创作者工作区 · 整理作品、设计展览、发布分享',
-        width: 1270,
-        height: 714,
-      },
+      galleryWorkspace,
       {
         src: '/images/projects/vie-gallery-20261016-photo-effects.webp',
         alt: '同一张海岸照片在固定构图下的十六种实际渲染结果，包括胶片、水波、银盐、美术纸和冰晶处理',
@@ -446,6 +465,13 @@ export const projectsSource: Project[] = [
     updatedAt: '2026-10-20',
     tags: ['Python 3.12', 'FastAPI', 'FastMCP', 'LangGraph', 'SQLite', 'PostgreSQL', 'React'],
     featured: false,
+    cover: {
+      src: '/images/projects/erpilot-approval.webp',
+      alt: 'Erpilot 工作台的待审批订单，右侧显示商品数量、总金额和批准及拒绝入口',
+      caption: 'ERP 订单审批智能体',
+      width: 1193,
+      height: 825,
+    },
     github: 'https://github.com/creatawork/Erpilot',
     capabilities: [
       {

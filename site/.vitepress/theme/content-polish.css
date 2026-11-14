@@ -529,22 +529,13 @@
   --project-muted: var(--vie-ink-soft);
 }
 
-.vp-doc .vie-projects-heading h1 {
-  font-size: clamp(30px, 3.4vw, 42px);
-  line-height: 1.4;
-}
-
-.vp-doc :is(.vie-flagship, .vie-project-row, .vie-timeline-card) {
+.vp-doc .vie-timeline-card {
   border-radius: var(--vie-radius);
   background: var(--vie-panel);
 }
 
-.vp-doc :is(.vie-spotlight__name, .vie-detail-title) {
+.vp-doc .vie-detail-title {
   line-height: 1.3;
-}
-
-.vp-doc .vie-projects .vie-flagship .vie-spotlight__name {
-  font-size: clamp(32px, 3.6vw, 46px);
 }
 
 .vp-doc .vie-projects .vie-media-stage {

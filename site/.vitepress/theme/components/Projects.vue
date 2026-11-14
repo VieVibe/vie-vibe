@@ -2,41 +2,22 @@
 import { computed } from 'vue'
 import { data as projects } from '../../../projects.data'
 import ProjectSpotlight from './ProjectSpotlight.vue'
-import ProjectMediaStrip from './ProjectMediaStrip.vue'
 
-const flagship = computed(() => projects.find((p) => p.featured) ?? projects[0])
-const others = computed(() => projects.filter((p) => p !== flagship.value))
+const featured = computed(() => projects.find((project) => project.featured) ?? projects[0])
+const others = computed(() => projects.filter((project) => project !== featured.value))
 </script>
 
 <template>
-  <div class="vie-page vie-projects">
-    <header class="vie-projects-heading">
-      <h1>项目</h1>
-      <p>从照片展览、桌面启动器到 ERP 智能体。</p>
+  <div class="vie-projects vie-project-index">
+    <header class="vie-project-index__heading">
+      <h1>项目作品</h1>
+      <p>在线相册、Windows 启动器和 ERP 智能体。</p>
     </header>
-    <section v-if="flagship" class="vie-flagship">
-      <div class="vie-flagship__top">
-        <ProjectSpotlight :project="flagship" title-tag="h2" show-tech />
-        <div class="vie-flagship__media">
-          <ProjectMediaStrip :media="flagship.media ?? []" variant="flagship" eager />
-        </div>
-      </div>
-    </section>
-    <p v-else class="vie-empty">项目正在整理中。</p>
 
-    <section v-if="others.length" class="vie-more" aria-labelledby="vie-more-title">
-      <h2 id="vie-more-title" class="vie-more__title">更多实践</h2>
-      <div class="vie-more__grid">
-        <ProjectSpotlight
-          v-for="p in others"
-          :key="p.slug ?? p.name"
-          :project="p"
-          title-tag="h3"
-          compact
-          show-tech
-          class="vie-project-row"
-        />
-      </div>
-    </section>
+    <div v-if="featured" class="vie-project-index__grid">
+      <ProjectSpotlight :project="featured" featured />
+      <ProjectSpotlight v-for="project in others" :key="project.slug ?? project.name" :project="project" />
+    </div>
+    <p v-else class="vie-empty">项目正在整理中。</p>
   </div>
 </template>

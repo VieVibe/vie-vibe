@@ -81,7 +81,10 @@ describe('projects data', () => {
           ).toBe(true)
         }
       }
-      for (const m of p.media ?? []) {
+      const visuals = [...(p.media ?? [])]
+      if (p.cover) visuals.push(p.cover)
+      if (p.coverPhoto) visuals.push(p.coverPhoto)
+      for (const m of visuals) {
         expect(m.src.startsWith('/'), `${p.name}: media src`).toBe(true)
         expect(
           fs.existsSync(path.join(siteRoot, 'public', m.src)),

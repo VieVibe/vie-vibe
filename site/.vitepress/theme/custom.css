@@ -1512,19 +1512,16 @@ body {
 
 /* Project surfaces own the full shell width; the default reading column
    (784px) is for articles only. */
-.vie-vibe:not(.vie-page-home) .VPDoc .container:has(.vie-flagship),
 .vie-vibe:not(.vie-page-home) .VPDoc .container:has(.vie-project-detail) {
   display: block;
   max-width: min(1240px, 100%);
 }
 
-.vie-vibe:not(.vie-page-home) .VPDoc .content:has(.vie-flagship),
 .vie-vibe:not(.vie-page-home) .VPDoc .content:has(.vie-project-detail) {
   max-width: min(1240px, 100%);
   padding: 0;
 }
 
-.vie-vibe:not(.vie-page-home) .vp-doc:has(.vie-flagship),
 .vie-vibe:not(.vie-page-home) .vp-doc:has(.vie-project-detail) {
   max-width: none;
   padding: 0;

@@ -24,44 +24,8 @@
   transform: translateY(-2px);
 }
 
-.vp-doc a.vie-cta--ghost {
-  background: var(--vie-paper);
-  color: var(--vie-ink);
-}
-
-.vp-doc a.vie-cta--ghost:hover {
-  background: var(--vie-green-soft);
-  transform: translateY(-2px);
-}
-
 .vp-doc a.vie-cta:active {
   transform: translateY(0);
-}
-
-.vp-doc .vie-spotlight {
-  display: grid;
-  gap: 18px;
-  justify-items: start;
-  min-width: 0;
-}
-
-.vp-doc .vie-spotlight__name {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-family: var(--vie-font-display);
-  font-size: 36px;
-  line-height: 1.16;
-  letter-spacing: -0.04em;
-  color: var(--vie-ink);
-  overflow-wrap: anywhere;
-}
-
-.vp-doc .vie-spotlight__summary {
-  margin: 0;
-  color: var(--vie-ink-soft);
-  font-size: 16px;
-  line-height: 1.85;
 }
 
 .vp-doc .vie-project-tech {
@@ -80,28 +44,15 @@
   line-height: 1.7;
 }
 
-.vp-doc .vie-spotlight--compact .vie-spotlight__name {
-  font-size: 32px;
-}
-
-.vie-spotlight .vie-badge {
-  font-family: var(--vie-font-body);
-  letter-spacing: 0;
-}
-
 .vie-projects, .vie-project-page {
   --project-surface: color-mix(in srgb, var(--vie-green-soft) 30%, var(--vie-paper));
   --project-muted: var(--vie-ink-soft);
   min-width: 0;
 }
 
-.vie-vibe:not(.vie-page-home) .VPDoc .content-container:has(:is(.vie-projects, .vie-project-page)) {
+.vie-vibe:not(.vie-page-home) .VPDoc .content-container:has(.vie-project-page) {
   max-width: 1240px;
   width: 100%;
-}
-
-.vie-projects.vie-page {
-  padding: 18px 0 64px;
 }
 
 .vie-vibe .vp-doc :is(.vie-projects, .vie-project-page) p {
@@ -139,54 +90,6 @@
 .vie-vibe .vp-doc :is(.vie-projects, .vie-project-page) .vie-badge.is-paused {
   background: var(--vie-paper);
   color: var(--vie-ink-soft);
-}
-
-.vie-projects-heading {
-  margin-bottom: 32px;
-}
-
-.vp-doc .vie-projects-heading h1 {
-  margin: 0;
-  font-size: clamp(36px, 4vw, 48px);
-  line-height: 1.2;
-  letter-spacing: -0.04em;
-}
-
-.vie-vibe .vp-doc .vie-projects-heading p {
-  margin: 12px 0 0;
-  color: var(--vie-ink-soft);
-}
-
-.vie-flagship {
-  padding: 36px;
-  background: var(--vie-panel);
-  border-radius: var(--vie-radius);
-}
-
-.vie-flagship__top {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 40px;
-  align-items: start;
-}
-
-.vie-projects .vie-flagship .vie-spotlight {
-  position: sticky;
-  top: 114px;
-  padding: 18px 0;
-  gap: 20px;
-}
-
-.vp-doc .vie-projects .vie-flagship .vie-spotlight__name {
-  font-size: clamp(36px, 4vw, 52px);
-}
-
-.vie-vibe .vp-doc .vie-projects .vie-spotlight__summary {
-  color: var(--vie-ink);
-}
-
-.vie-flagship__media {
-  min-width: 0;
 }
 
 /* The screenshots are the visual. Each original stays one click away. */
@@ -343,31 +246,6 @@
   overflow-wrap: anywhere;
 }
 
-.vie-more {
-  margin-top: 64px;
-}
-
-.vp-doc .vie-more__title {
-  margin: 0 0 24px;
-  padding: 0;
-  border: 0;
-  font-size: 24px;
-  letter-spacing: -0.03em;
-}
-
-.vie-more__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.vp-doc .vie-project-row {
-  grid-template-rows: auto auto 1fr auto auto;
-  padding: 32px 36px;
-  background: var(--vie-panel);
-  border-radius: var(--vie-radius);
-}
-
 @keyframes vie-project-image-in {
   from {
     opacity: 0.4;
@@ -379,18 +257,6 @@
   }
 }
 
-@media (max-width: 1100px) {
-  .vie-flagship {
-    padding: 28px;
-  }
-  .vie-flagship__top {
-    gap: 28px;
-  }
-  .vp-doc .vie-project-row {
-    padding: 28px;
-  }
-}
-
 @media (max-width: 800px) {
   .vie-app:has(:is(.vie-projects, .vie-project-page)) .vie-global-nav__inner {
     grid-template-columns: 100px minmax(0, 1fr) auto;
@@ -398,19 +264,7 @@
   .vie-app:has(:is(.vie-projects, .vie-project-page)) .vie-global-nav__github {
     flex-shrink: 0;
   }
-  .vie-flagship__top {
-    grid-template-columns: 1fr;
-  }
-  .vie-projects .vie-flagship .vie-spotlight {
-    position: static;
-    padding: 0;
-  }
-  .vie-flagship__top {
-    gap: 28px;
-  }
-  .vie-more {
-    margin-top: 40px;
-  }
+
 }
 
 @media (max-width: 720px) {
@@ -420,26 +274,6 @@
 }
 
 @media (max-width: 540px) {
-  .vie-projects.vie-page {
-    max-width: calc(100% - 8px);
-    padding-top: 8px;
-  }
-  .vie-projects-heading {
-    padding: 0 4px;
-  }
-  .vie-vibe .vp-doc .vie-projects-heading p {
-    font-size: 15px;
-  }
-  .vie-flagship, .vp-doc .vie-project-row {
-    padding: 22px 18px;
-    border-radius: 10px;
-  }
-  .vie-projects .vie-flagship .vie-spotlight {
-    gap: 16px;
-  }
-  .vie-more__grid {
-    grid-template-columns: 1fr;
-  }
   .vie-media-select {
     gap: 6px;
   }
