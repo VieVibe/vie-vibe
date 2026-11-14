@@ -23,6 +23,11 @@ jsonLd:
 
 <script setup>
 import GalleryProduct from '../.vitepress/theme/components/products/GalleryProduct.vue'
+
+const sections = [
+  { href: '#experience', label: '观看展览' },
+  { href: '#architecture', label: '创作与发布' },
+]
 </script>
 
-<ProjectDetail slug="vie-gallery" feature="展览体验" :view="GalleryProduct" />
+<ProjectDetail slug="vie-gallery" :sections="sections" :view="GalleryProduct" />

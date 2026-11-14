@@ -18,6 +18,11 @@ jsonLd:
 
 <script setup>
 import ErpilotProduct from '../.vitepress/theme/components/products/ErpilotProduct.vue'
+
+const sections = [
+  { href: '#experience', label: '审批流程' },
+  { href: '#capabilities', label: '政策与库存' },
+]
 </script>
 
-<ProjectDetail slug="erpilot" feature="审批流程" :view="ErpilotProduct" />
+<ProjectDetail slug="erpilot" :sections="sections" :view="ErpilotProduct" />

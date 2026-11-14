@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ArrowLeft, ArrowRight, Sun } from '@lucide/vue'
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Component } from 'vue'
 import { data as projects } from '../../../projects.data'
 import { legacyProjectLogTarget, projectLogPath } from './logAnchor'
 
-const props = defineProps<{ slug: string; feature: string; view: Component }>()
+const props = defineProps<{
+  slug: string
+  sections: { href: string; label: string }[]
+  view: Component
+}>()
 const project = computed(() => projects.find((item) => item.slug === props.slug))
 
 function followLegacyLink() {
@@ -24,18 +27,17 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
 <template>
   <div v-if="project" class="product-site" :class="'product-site--' + slug">
     <a class="product-skip vp-raw" href="#product-content">跳到产品介绍</a>
-    <nav class="product-nav" :aria-label="project.name + ' 导航'">
+    <nav class="product-nav" :aria-label="project.name + '导航'">
       <div class="product-wrap product-nav__inner">
-        <a class="product-nav__brand" href="/projects" :aria-label="'全部项目，当前项目 ' + project.name">
-          <ArrowLeft class="product-nav__back" :size="17" aria-hidden="true" />
-          <img v-if="slug === 'glint'" src="/images/projects/glint-icon.webp" alt="" width="28" height="28" />
-          <Sun v-else-if="slug === 'vie-gallery'" :size="23" aria-hidden="true" />
+        <a class="product-nav__brand" href="#overview">
+          <img v-if="slug === 'glint'" src="/images/projects/glint-icon.webp" alt="" width="34" height="34" />
+          <img v-else-if="slug === 'vie-gallery'" src="/images/projects/gallery-icon.svg" alt="" width="34" height="34" />
           <span v-else class="product-nav__erp" aria-hidden="true">e</span>
           {{ project.name }}
         </a>
         <div class="product-nav__links">
-          <a class="product-nav__feature" href="#experience">{{ feature }}</a>
-          <a :href="projectLogPath(slug)">开发日志 <ArrowRight :size="15" aria-hidden="true" /></a>
+          <a v-for="section in sections" :key="section.href" class="product-nav__section" :href="section.href">{{ section.label }}</a>
+          <a :href="projectLogPath(slug)">开发日志</a>
         </div>
       </div>
     </nav>
@@ -44,14 +46,12 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
       <component :is="view" :project="project" />
     </main>
 
-    <footer class="product-log-link">
-      <div class="product-wrap product-log-link__inner">
-        <div>
-          <h2>开发日志</h2>
-          <p v-if="project.log?.length">{{ project.log.length }} 篇记录，最近更新于 <time :datetime="project.log[0].date">{{ project.log[0].date }}</time></p>
-        </div>
-        <a class="product-button product-button--secondary" :href="projectLogPath(slug)">阅读开发日志 <ArrowRight :size="17" aria-hidden="true" /></a>
-      </div>
+    <footer class="product-footer">
+      <nav class="product-wrap product-footer__links" :aria-label="project.name + '相关链接'">
+        <a href="/projects">全部项目</a>
+        <a :href="projectLogPath(slug)">开发日志</a>
+        <a v-if="project.github" :href="project.github" target="_blank" rel="noopener noreferrer">GitHub 源码</a>
+      </nav>
     </footer>
   </div>
   <main v-else class="vie-page">
