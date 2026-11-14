@@ -12,17 +12,20 @@ const selected = ref(0)
 const launched = ref('')
 const showSource = ref(false)
 const previewImage = '/images/projects/glint-preview.webp'
-const readme = `# 轻启 Glint
-
-Windows 应用启动器与文件快速预览。
-
-## 键盘操作
-
-- Alt+Space 搜索并打开应用
-- Space 预览资源管理器中选中的文件
-- Ctrl+M 切换 Markdown 排版与源码
-
-> 这份 README 用于演示文件预览。`
+const readme = {
+  title: '轻启 Glint',
+  intro: 'Windows 应用启动器与文件快速预览。',
+  shortcuts: [
+    'Alt+Space 搜索并打开应用',
+    'Space 预览资源管理器中选中的文件',
+    'Ctrl+M 切换 Markdown 排版与源码',
+  ],
+  note: '这份 README 用于演示文件预览。',
+}
+const readmeSource = [
+  `# ${readme.title}`, '', readme.intro, '', '## 键盘操作', '',
+  ...readme.shortcuts.map((shortcut) => `- ${shortcut}`), '', `> ${readme.note}`,
+].join('\n')
 const results = computed(() => searchDemoApps(query.value))
 watch(query, () => { selected.value = 0; launched.value = '' })
 
@@ -54,14 +57,14 @@ function handleSearchKey(event: KeyboardEvent) {
 </script>
 
 <template>
-  <header id="overview" class="glint-hero">
+  <header id="overview" class="glint-hero" tabindex="-1">
     <div class="product-wrap glint-hero__stage">
       <div class="glint-hero__copy">
         <h1>应用随键而来</h1>
         <p>轻启是 Windows 上的应用启动器。输入中文、拼音或首字母，按回车打开应用。</p>
         <div class="product-actions">
           <a class="product-button" :href="project.download">下载 Windows x64 版</a>
-          <a class="product-text-link" href="#experience">试一次搜索 <ArrowDown :size="16" aria-hidden="true" /></a>
+          <a class="product-text-link vp-raw" href="#experience">试一次搜索 <ArrowDown :size="16" aria-hidden="true" /></a>
         </div>
       </div>
       <figure class="glint-hero__window">
@@ -71,7 +74,7 @@ function handleSearchKey(event: KeyboardEvent) {
     </div>
   </header>
 
-  <section id="experience" class="product-section glint-search">
+  <section id="experience" class="product-section glint-search" tabindex="-1">
     <div class="product-wrap glint-search__grid">
       <div class="product-section-intro">
         <h2>用习惯的方式搜索</h2>
@@ -118,7 +121,7 @@ function handleSearchKey(event: KeyboardEvent) {
     </div>
   </section>
 
-  <section id="capabilities" class="glint-preview product-section">
+  <section id="capabilities" class="glint-preview product-section" tabindex="-1">
     <div class="product-wrap glint-preview__grid">
       <div class="product-section-intro">
         <h2>选中文件，<br />按空格就能看</h2>
@@ -133,11 +136,20 @@ function handleSearchKey(event: KeyboardEvent) {
             <button type="button" :aria-pressed="showSource" aria-controls="glint-preview-body" @click="showSource = true">源码</button>
           </div>
         </figcaption>
-        <div id="glint-preview-body" class="glint-preview__paper">
-          <pre v-if="showSource"><code>{{ readme }}</code></pre>
-          <a v-else class="product-image-link" :href="previewImage" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Glint 原生 Markdown 预览">
-            <img :src="previewImage" alt="Glint 原生 Markdown 窗口显示 README 标题、键盘操作和引用" width="1152" height="741" loading="lazy" decoding="async" />
-          </a>
+        <div id="glint-preview-body" class="glint-preview__paper" aria-live="polite">
+          <pre v-if="showSource"><code>{{ readmeSource }}</code></pre>
+          <template v-else>
+            <a class="product-image-link" :href="previewImage" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Glint 原生 Markdown 预览">
+              <img :src="previewImage" alt="" width="1152" height="741" loading="lazy" decoding="async" />
+            </a>
+            <div class="visually-hidden">
+              <p><strong>{{ readme.title }}</strong></p>
+              <p>{{ readme.intro }}</p>
+              <p><strong>键盘操作</strong></p>
+              <ul><li v-for="shortcut in readme.shortcuts" :key="shortcut">{{ shortcut }}</li></ul>
+              <p>{{ readme.note }}</p>
+            </div>
+          </template>
         </div>
       </figure>
     </div>

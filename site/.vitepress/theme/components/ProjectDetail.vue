@@ -29,14 +29,14 @@ onUnmounted(() => window.removeEventListener('hashchange', followLegacyLink))
     <a class="product-skip vp-raw" href="#product-content">跳到产品介绍</a>
     <nav class="product-nav" :aria-label="project.name + '导航'">
       <div class="product-wrap product-nav__inner">
-        <a class="product-nav__brand" href="#overview">
+        <a class="product-nav__brand vp-raw" href="#overview">
           <img v-if="slug === 'glint'" src="/images/projects/glint-icon.webp" alt="" width="34" height="34" />
           <img v-else-if="slug === 'vie-gallery'" src="/images/projects/gallery-icon.svg" alt="" width="34" height="34" />
           <span v-else class="product-nav__erp" aria-hidden="true">e</span>
           {{ project.name }}
         </a>
         <div class="product-nav__links">
-          <a v-for="section in sections" :key="section.href" class="product-nav__section" :href="section.href">{{ section.label }}</a>
+          <a v-for="section in sections" :key="section.href" class="product-nav__section vp-raw" :href="section.href">{{ section.label }}</a>
           <a :href="projectLogPath(slug)">开发日志</a>
         </div>
       </div>

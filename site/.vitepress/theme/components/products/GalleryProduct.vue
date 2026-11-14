@@ -19,20 +19,20 @@ function stepPhoto(step: number) {
 </script>
 
 <template>
-  <header id="overview" class="gallery-hero">
+  <header id="overview" class="gallery-hero" tabindex="-1">
     <img class="gallery-hero__photo" src="/images/projects/gallery-coast.webp" alt="浪花拍打草坡下的海岸悬崖" width="1280" height="720" fetchpriority="high" />
     <div class="product-wrap gallery-hero__content">
       <h1>把照片，<br />办成一场展览</h1>
       <p>整理原片、布置展厅，再邀请别人走进你的在线相册。</p>
       <div class="product-actions">
         <a class="product-button" :href="project.demo" target="_blank" rel="noopener noreferrer">进入阳光明媚</a>
-        <a class="product-text-link" href="#experience">先看一组作品 <ArrowDown :size="16" aria-hidden="true" /></a>
+        <a class="product-text-link vp-raw" href="#experience">先看一组作品 <ArrowDown :size="16" aria-hidden="true" /></a>
       </div>
       <p class="gallery-hero__caption">《山海之间》 · 海岸来信</p>
     </div>
   </header>
 
-  <section id="experience" class="gallery-exhibit product-section">
+  <section id="experience" class="gallery-exhibit product-section" tabindex="-1">
     <div class="product-wrap gallery-exhibit__grid">
       <div class="product-section-intro gallery-exhibit__intro">
         <h2>在照片之间漫游</h2>
@@ -71,7 +71,7 @@ function stepPhoto(step: number) {
     </div>
   </section>
 
-  <section id="architecture" class="gallery-workspace product-section">
+  <section id="architecture" class="gallery-workspace product-section" tabindex="-1">
     <div class="product-wrap">
       <div class="product-section-intro">
         <h2>在工作区布置你的展厅</h2>

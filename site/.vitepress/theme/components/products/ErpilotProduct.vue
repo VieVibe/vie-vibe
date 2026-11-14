@@ -17,13 +17,13 @@ const orderTotal = '¥3,355.00'
 </script>
 
 <template>
-  <header id="overview" class="erp-hero">
+  <header id="overview" class="erp-hero" tabindex="-1">
     <div class="product-wrap erp-hero__grid">
       <div class="erp-hero__copy">
         <h1>订单提交前，<br />让人先确认</h1>
         <p>Erpilot 将下单需求整理成订单草稿。审批人核对商品、报价和库存影响，批准后才提交。</p>
         <div class="product-actions">
-          <a class="product-button" href="#experience">走一遍审批流程</a>
+          <a class="product-button vp-raw" href="#experience">走一遍审批流程</a>
           <a class="product-text-link" :href="project.github + '/blob/main/docs/demo-guide.md'" target="_blank" rel="noopener noreferrer">本地演示指南</a>
         </div>
       </div>
@@ -42,7 +42,7 @@ const orderTotal = '¥3,355.00'
     </div>
   </header>
 
-  <section id="experience" class="erp-flow product-section">
+  <section id="experience" class="erp-flow product-section" tabindex="-1">
     <div class="product-wrap">
       <div class="product-section-intro">
         <h2>同一份草稿，四种状态</h2>
@@ -70,7 +70,7 @@ const orderTotal = '¥3,355.00'
     </div>
   </section>
 
-  <section id="capabilities" class="product-section erp-evidence">
+  <section id="capabilities" class="product-section erp-evidence" tabindex="-1">
     <div class="product-wrap">
       <div class="product-section-intro">
         <h2>每个答案都能核对</h2>

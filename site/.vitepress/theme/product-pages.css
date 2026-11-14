@@ -342,6 +342,7 @@ html:has(.product-site) {
 }
 
 :is(.glint-launcher__examples, .glint-preview__views) button:is(:hover, [aria-pressed='true']) { background: #315e45; color: #fff; }
+:is(.glint-launcher__examples, .glint-preview__views) button:focus-visible { outline-color: #315e45; }
 
 .glint-keymap { max-width: 35rem; padding: 10px 16px; border-radius: 7px; background: #e3ebdf; }
 .glint-keymap > div { display: grid; grid-template-columns: minmax(123px, .74fr) minmax(0, 1fr); align-items: center; gap: 8px 14px; min-height: 50px; padding: 6px 0; }
@@ -402,6 +403,7 @@ html:has(.product-site) {
 .erp-flow__steps button { min-height: 48px; padding: 6px 8px; border: 1px solid #8a82a9; border-radius: 6px; color: #f6f1ff; font-size: 15px; cursor: pointer; }
 .erp-flow__steps button:hover { background: #3a3455; }
 .erp-flow__steps button[aria-pressed='true'] { border-color: #ddd4ff; background: #ded7fb; color: #2b2350; font-weight: 700; }
+.erp-flow__steps button:focus-visible { outline-color: #ded7fb; }
 
 .erp-flow__preview {
   display: grid;
