@@ -19,7 +19,7 @@ import VieWordmark from './VieWordmark.vue'
       </nav>
       <div class="vie-fresh-footer__bottom">
         <small>© {{ new Date().getFullYear() }} Vie</small>
-        <div><a href="https://github.com/creatawork" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight :size="15" aria-hidden="true" /></a><a href="/feed.xml">RSS 订阅</a><a href="/articles/meta/how-this-site-works">站点说明</a><a href="#" aria-label="回到顶部">回到顶部 ↑</a></div>
+        <div><a href="https://github.com/VieVibe" target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight :size="15" aria-hidden="true" /></a><a href="/feed.xml">RSS 订阅</a><a href="/articles/meta/how-this-site-works">站点说明</a><a href="#" aria-label="回到顶部">回到顶部 ↑</a></div>
       </div>
     </div>
   </footer>

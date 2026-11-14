@@ -194,7 +194,7 @@ export const projectsSource: Project[] = [
       width: 1280,
       height: 720,
     },
-    github: 'https://github.com/creatawork/vie-gallery',
+    github: 'https://github.com/VieVibe/vie-gallery',
     demo: 'https://gallery.vie-vibe.cn/app/',
     capabilities: [
       {
@@ -284,7 +284,7 @@ export const projectsSource: Project[] = [
         detail: '将作品标题、计数、翻页与风格切换整合到底部导航，修复平板上的控件遮挡。手机编辑支持收起实时预览，相册概览突出封面，作品整理减少重复操作；以文件名命名的公开作品改用作品序号展示。',
         type: 'feature',
         tech: ['Vue 3', 'Three.js'],
-        link: 'https://github.com/creatawork/vie-gallery/commit/997dc18954e2d8497e9010abe5b02aadfbf4c218',
+        link: 'https://github.com/VieVibe/vie-gallery/commit/997dc18954e2d8497e9010abe5b02aadfbf4c218',
       },
       {
         date: '2026-10-16',
@@ -292,7 +292,7 @@ export const projectsSource: Project[] = [
         detail: '创作者可以查看并切换个人或受邀工作区，在当前标签页保留选择。服务端按成员角色校验每次操作，成员被移除后刷新即可返回默认工作区。',
         type: 'feature',
         tech: ['Vue 3', 'Spring Boot', 'MyBatis-Plus'],
-        link: 'https://github.com/creatawork/vie-gallery/commit/ee74f785d8c2839a15fbb7f7e2e0c25f5a0311f1',
+        link: 'https://github.com/VieVibe/vie-gallery/commit/ee74f785d8c2839a15fbb7f7e2e0c25f5a0311f1',
       },
       {
         date: '2026-10-16',
@@ -300,7 +300,7 @@ export const projectsSource: Project[] = [
         detail: '统一“阳光明媚”的名称、图标与页面交互，调整密码长度规则与账户入口，并修复注册时 CSRF Token 过期的问题。',
         type: 'fix',
         tech: ['Vue 3', 'Spring Boot'],
-        link: 'https://github.com/creatawork/vie-gallery/commit/42526ad',
+        link: 'https://github.com/VieVibe/vie-gallery/commit/42526ad',
       },
       {
         date: '2026-10-16',
@@ -308,7 +308,7 @@ export const projectsSource: Project[] = [
         detail: '新增丝绸、全息、胶片、水波、银盐与纸张等照片风格，以及翻页画册、空间穿行等观看方式。风格、编排、氛围和版本设置共用配置规则，预设卡展示实际渲染效果，支持强度归零、静态呈色与减少动态效果。',
         type: 'feature',
         tech: ['Three.js', 'GLSL', 'Vue 3', 'TypeScript'],
-        link: 'https://github.com/creatawork/vie-gallery/blob/997dc18954e2d8497e9010abe5b02aadfbf4c218/docs/photo-effects-redesign-2026-10-16.md',
+        link: 'https://github.com/VieVibe/vie-gallery/blob/997dc18954e2d8497e9010abe5b02aadfbf4c218/docs/photo-effects-redesign-2026-10-16.md',
       },
       {
         date: '2026-10-15',
@@ -472,7 +472,7 @@ export const projectsSource: Project[] = [
       width: 1193,
       height: 825,
     },
-    github: 'https://github.com/creatawork/Erpilot',
+    github: 'https://github.com/VieVibe/Erpilot',
     capabilities: [
       {
         title: '固定版本的订单审批',

@@ -2,7 +2,7 @@
   "project": "Erpilot",
   "publishedAt": "2026-10-20",
   "evidenceAsOf": "2026-10-19",
-  "repository": "https://github.com/creatawork/Erpilot",
+  "repository": "https://github.com/VieVibe/Erpilot",
   "publicHead": "e2236d2c6cb946c7533bfe73f3370d915d9200de",
   "localHead": "0111150f081b687331a6b88d2f80c42b0e80e874",
   "scope": "Selected article sources and synthetic evaluation evidence from the local working tree, including uncommitted files; not a complete runnable release or a claim that the local working tree is publicly committed.",

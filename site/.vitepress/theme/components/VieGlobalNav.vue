@@ -88,7 +88,7 @@ onUnmounted(() => {
 
       <div class="vie-global-nav__actions">
         <VieNavSearch ref="navSearch" v-model:open="searchOpen" />
-        <a class="vie-global-nav__github" href="https://github.com/creatawork" target="_blank" rel="noopener" aria-label="GitHub 主页">
+        <a class="vie-global-nav__github" href="https://github.com/VieVibe" target="_blank" rel="noopener" aria-label="GitHub 主页">
           <span>GitHub</span><ArrowUpRight :size="16" aria-hidden="true" />
         </a>
         <button

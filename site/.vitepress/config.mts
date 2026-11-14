@@ -88,7 +88,7 @@ export default defineConfig({
       { text: '成果', link: '/projects' },
       { text: '工具', link: '/tools' },
     ],
-    socialLinks: [{ icon: 'github', link: 'https://github.com/creatawork' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/VieVibe' }],
     outline: { label: '本页目录' },
     lastUpdated: { text: '最后更新' },
     docFooter: { prev: '上一篇', next: '下一篇' },

@@ -9,7 +9,7 @@ description: 从一次流式 API 调用开始手写 agent loop：事件模型、
 
 > Erpilot 系列第 1 篇 · 2026-09-30
 >
-> 代码在 [erpilot/packages/agent_core](https://github.com/creatawork/Erpilot)（M1 第 1–4 周），约 1200 行 Python + 44 项单测。
+> 代码在 [erpilot/packages/agent_core](https://github.com/VieVibe/Erpilot)（M1 第 1–4 周），约 1200 行 Python + 44 项单测。
 > 这一版刻意不用任何 agent 框架——为什么、以及什么时候我会换上 LangGraph，文末说。
 
 > 更新说明（2026-10-20）：本文保留 2026-09-30 的实现与计划语境。当前运行时已迁移到 LangGraph，审批与事件协议的实际变化见[第 3 篇](/articles/ai/langgraph-approval)，最新进度见<a href="/projects/erpilot" target="_blank" rel="noopener" aria-label="在新标签页查看 Erpilot 项目介绍">项目页</a>。
@@ -171,7 +171,7 @@ async for event in recorder.run(agent, messages):   # 事件原样透传
 
 一行一个 JSON 记录，追加写、逐行 flush：`run_start`（开跑时的历史快照）→ `step_start` / `step_end`（每轮文本、token、成本、耗时）→ `tool_call`（每次调用的入参出参与耗时）→ `run_end`（结束时完整历史）。异常也留痕：`run_error` 记完再原样抛出。
 
-为什么不是直接上 Langfuse？不是它不好，是 M1 用不上：自托管一套要 Docker + Postgres + ClickHouse + 对象存储，而现在的场景是单机、单进程、低频调用。逐行 flush 的 JSONL 意味着**进程崩了已写的行还在**（观测管道最需要工作的时刻恰恰是故障时刻）；裸文本意味着 `grep`/`jq`/`tail -f` 全都能用；格式是自定义的，将来映射到 OTel GenAI 语义约定或者 Langfuse 只是换个 sink。取舍全文写进了 [ADR-0003](https://github.com/creatawork/Erpilot/blob/main/docs/adr/0003-local-jsonl-trace-first.md)。
+为什么不是直接上 Langfuse？不是它不好，是 M1 用不上：自托管一套要 Docker + Postgres + ClickHouse + 对象存储，而现在的场景是单机、单进程、低频调用。逐行 flush 的 JSONL 意味着**进程崩了已写的行还在**（观测管道最需要工作的时刻恰恰是故障时刻）；裸文本意味着 `grep`/`jq`/`tail -f` 全都能用；格式是自定义的，将来映射到 OTel GenAI 语义约定或者 Langfuse 只是换个 sink。取舍全文写进了 [ADR-0003](https://github.com/VieVibe/Erpilot/blob/main/docs/adr/0003-local-jsonl-trace-first.md)。
 
 `erpilot replay` 把流水还原成可读对话。下面是本文写作当天的一段**真实 trace**——当时上游端点不稳定，一轮请求慢到 266 秒，我在等待第 2 轮结果时手动中止了它：
 

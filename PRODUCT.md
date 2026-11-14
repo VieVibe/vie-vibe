@@ -35,7 +35,7 @@ web
 - 产品名：**Vie**（展示：V 大写，ie 小写；域名/仓库仍可保留 vie）
 - 定位句：写清楚每一个技术决策
 - 副文案：全栈开发 · 技术实现细节与思路
-- 社交：GitHub `creatawork`
+- 社交：GitHub `VieVibe`
 - 视觉：清新浅色作品集，暖白底色、浅薄荷表面、自然绿主色；首屏定位与真实产品图库并列，全站统一页脚和技术阅读层级。字标 Vie；正文和标题使用 Noto Sans SC / 系统字体，JetBrains Mono 仅用于代码与工具结果。详见 `DESIGN.md`。
 
 ## Capabilities
